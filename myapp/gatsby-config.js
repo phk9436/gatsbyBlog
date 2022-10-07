@@ -17,7 +17,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-plugin-typescript',
+      resolve: "gatsby-plugin-typescript",
       options: {
         isTSX: true,
         allExtensions: true,

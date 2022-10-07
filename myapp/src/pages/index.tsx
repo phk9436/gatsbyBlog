@@ -1,17 +1,21 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { Global } from "@emotion/react"
 import GlobalStyle from "components/Common/GlobalStyle"
 import styled from "@emotion/styled"
-import ProfileImage from "components/Main/ProfileImg"
 import Intro from "components/Main/Intro"
 import Footer from "components/Common/Footer"
+import CategoryList from "components/Main/CategoryList"
 
+export const CATEGORY_LIST = {
+  All: 5,
+  Web: 3,
+  Mobile: 2,
+}
 const IndexPage = () => {
   return (
     <Container>
       <GlobalStyle />
       <Intro />
+      <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST}/>
       <Footer />
     </Container>
   )

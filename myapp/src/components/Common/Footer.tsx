@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from '@emotion/styled'
+import React from "react"
+import styled from "@emotion/styled"
 
 function Footer() {
   return (
     <FooterWrapper>
-    Thank You for Visiting My Blog, Have a Good Day 😆
-    <br />© 2022 Developer Phk, Powered By Gatsby.
-  </FooterWrapper>
+      Thank You for Visiting My Blog, Have a Good Day 😆
+      <br />© 2022 Developer Phk, Powered By Gatsby.
+    </FooterWrapper>
   )
 }
 
