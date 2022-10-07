@@ -1,7 +1,7 @@
 import React from "react"
-import { graphql } from "gatsby"
-import Text from "components/Text"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
+import { css } from "@emotion/react"
+import styled from "@emotion/styled"
 
 interface InfoPageProps {
   data: {
@@ -24,10 +24,9 @@ function InfoPage({
 }: InfoPageProps) {
   return (
     <div>
-      <Text text={title} />
-      <Text text={description} />
-      <Text text={author} />
       <Link to="/">Home</Link>
+      <Text1 disabled={false}>{title}</Text1>
+      <Text1 disabled={true}>{description}</Text1>
     </div>
   )
 }
@@ -44,4 +43,11 @@ export const metadataQuery = graphql`
       }
     }
   }
+`
+
+const Text1 = styled("div")<{ disabled: boolean }>`
+  font-size: 18px;
+  font-weight: 700;
+  color: gray;
+  text-decoration: ${props => (props.disabled ? "line-through" : "none")};
 `

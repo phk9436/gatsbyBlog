@@ -1,15 +1,19 @@
 import * as React from "react"
-import Text from "components/Text"
-
-import Layout from "../components/layout"
 import { Link } from "gatsby"
+import { Global } from "@emotion/react"
+import GlobalStyle from "components/Common/GlobalStyle"
+import styled from "@emotion/styled"
+import ProfileImage from "components/Main/ProfileImg"
+import Intro from "components/Main/Intro"
+import Footer from "components/Common/Footer"
 
 const IndexPage = () => {
   return (
-    <Layout>
-      <Text text="Home" />
-      <Link to="/info">Info</Link>
-    </Layout>
+    <Container>
+      <GlobalStyle />
+      <Intro />
+      <Footer />
+    </Container>
   )
 }
 
@@ -20,3 +24,9 @@ const IndexPage = () => {
  */
 
 export default IndexPage
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
