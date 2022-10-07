@@ -2,12 +2,13 @@ import * as React from "react"
 import Text from "components/Text"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import { Link } from "gatsby"
 
 const IndexPage = () => {
   return (
     <Layout>
       <Text text="Home" />
+      <Link to="/info">Info</Link>
     </Layout>
   )
 }

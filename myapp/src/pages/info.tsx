@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Text from "components/Text"
+import { Link } from "gatsby"
 
 interface InfoPageProps {
   data: {
@@ -26,6 +27,7 @@ function InfoPage({
       <Text text={title} />
       <Text text={description} />
       <Text text={author} />
+      <Link to="/">Home</Link>
     </div>
   )
 }
