@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import Intro from "components/Main/Intro"
 import Footer from "components/Common/Footer"
 import CategoryList from "components/Main/CategoryList"
+import PostList from "components/Main/PostList"
 
 export const CATEGORY_LIST = {
   All: 5,
@@ -16,6 +17,7 @@ const IndexPage = () => {
       <GlobalStyle />
       <Intro />
       <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST}/>
+      <PostList />
       <Footer />
     </Container>
   )

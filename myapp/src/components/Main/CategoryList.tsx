@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react"
+import React, { ReactNode } from "react"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 
@@ -10,12 +10,11 @@ export interface CategoryListProps {
 }
 
 interface GatsbyLinkProps {
-  children: ReactNode;
-  className?: string;
-  to: string;
-  active: boolean;
+  children: ReactNode
+  className?: string
+  to: string
+  active: boolean
 }
-
 
 function CategoryList({ selectedCategory, categoryList }: CategoryListProps) {
   console.log(Object.entries(categoryList), categoryList)
@@ -28,7 +27,7 @@ function CategoryList({ selectedCategory, categoryList }: CategoryListProps) {
               to={`/?category=${name}`}
               active={name === selectedCategory}
             >
-              {name}({count})
+              #{name}({count})
             </CategoryItem>
           </li>
         ))}
@@ -40,13 +39,20 @@ function CategoryList({ selectedCategory, categoryList }: CategoryListProps) {
 export default CategoryList
 
 const CategoryListWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
   width: 768px;
   margin: 100px auto 0;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 10px;
+  }
 `
 
-const CategoryItem = styled(({ active, ...props }:GatsbyLinkProps) => <Link {...props} />)`
+const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
+  <Link {...props} />
+))`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;
