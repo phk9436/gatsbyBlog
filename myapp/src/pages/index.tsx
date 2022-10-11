@@ -3,13 +3,17 @@ import GlobalStyle from "components/Common/GlobalStyle"
 import styled from "@emotion/styled"
 import Intro from "components/Main/Intro"
 import Footer from "components/Common/Footer"
-import CategoryList from "components/Main/CategoryList"
+import CategoryList, { CategoryListProps } from "components/Main/CategoryList"
 import PostList from "components/Main/PostList"
 import { graphql } from "gatsby"
 import { PostListItemType } from "types/PostItem.types"
 import { IGatsbyImageData } from "gatsby-plugin-image"
+import queryString, { ParsedQuery } from "query-string"
 
-interface PostProps {
+export interface PostProps {
+  location: {
+    search: string
+  }
   data: {
     allMarkdownRemark: {
       edges: PostListItemType[]
@@ -22,19 +26,53 @@ interface PostProps {
   }
 }
 
-export const CATEGORY_LIST = {
-  All: 5,
-  Web: 3,
-  Mobile: 2,
-}
+const IndexPage = ({
+  location: { search },
+  data: { file, allMarkdownRemark },
+}: PostProps) => {
+  const parsed: ParsedQuery<string> = queryString.parse(search)
+  const selectedCategory =
+    !parsed.category || typeof parsed.category !== "string"
+      ? "All"
+      : parsed.category
 
-const IndexPage = ({ data: { file, allMarkdownRemark } }: PostProps) => {
+  const categoryList = React.useMemo(
+    () =>
+      allMarkdownRemark.edges.reduce(
+        (
+          list: CategoryListProps["categoryList"], //acc
+          {
+            node: {
+              frontmatter: { categories }, //cur
+            },
+          }: PostListItemType
+        ) => {
+          categories.forEach(category => {
+            if (list[category] === undefined) list[category] = 1
+            else list[category]++
+          })
+
+          list["All"]++
+
+          return list
+        },
+        { All: 0 } // initailValue
+      ),
+    []
+  )
+
   return (
     <Container>
       <GlobalStyle />
       <Intro profileImage={file.childImageSharp.gatsbyImageData} />
-      <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST} />
-      <PostList posts={allMarkdownRemark.edges} />
+      <CategoryList
+        selectedCategory={selectedCategory}
+        categoryList={categoryList}
+      />
+      <PostList
+        selectedCategory={selectedCategory}
+        posts={allMarkdownRemark.edges}
+      />
       <Footer />
     </Container>
   )
