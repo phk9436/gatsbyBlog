@@ -17,7 +17,6 @@ interface GatsbyLinkProps {
 }
 
 function CategoryList({ selectedCategory, categoryList }: CategoryListProps) {
-  console.log(Object.entries(categoryList), categoryList)
   return (
     <CategoryListWrapper>
       <ul>

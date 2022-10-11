@@ -1,13 +1,17 @@
 import React from "react"
 import styled from "@emotion/styled"
 import ProfileImage from "components/Main/ProfileImg"
+import { IGatsbyImageData } from "gatsby-plugin-image"
 
-function Intro() {
+interface IntroProps {
+  profileImage: IGatsbyImageData
+}
+
+function Intro({ profileImage }: IntroProps) {
   return (
     <Background>
       <Wrapper>
-        <ProfileImage />
-
+        <ProfileImage profileImage={profileImage} />
         <div>
           <SubTitle>Nice to Meet You,</SubTitle>
           <Title>I'm Junior Frontend Developer Phk.</Title>

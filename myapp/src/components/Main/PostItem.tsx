@@ -1,13 +1,9 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import { PostFrontmatterType } from "types/PostItem.types"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-interface PostItemProps {
-  title: string
-  date: string
-  categories: string[]
-  summary: string
-  thumbnail: string
+interface PostItemProps extends PostFrontmatterType {
   link: string
 }
 
@@ -16,12 +12,17 @@ function PostItem({
   date,
   categories,
   summary,
-  thumbnail,
+  thumbnail: {
+    childImageSharp: { gatsbyImageData },
+  },
   link,
 }: PostItemProps) {
   return (
-    <PostItemWrapper to={link}>
-      <ThumbnailImage src={thumbnail} alt="Post Item Image" />
+    <PostItemWrapper href={link}>
+      {gatsbyImageData && (
+        <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
+      )}
+
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
@@ -38,7 +39,7 @@ function PostItem({
 
 export default PostItem
 
-const PostItemWrapper = styled(Link)`
+const PostItemWrapper = styled("a")`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -51,7 +52,7 @@ const PostItemWrapper = styled(Link)`
   }
 `
 
-const ThumbnailImage = styled.img`
+const ThumbnailImage = styled(GatsbyImage)`
   width: 100%;
   height: 200px;
   border-radius: 10px 10px 0 0;
