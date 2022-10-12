@@ -9,6 +9,7 @@ import { graphql } from "gatsby"
 import { PostListItemType } from "types/PostItem.types"
 import { IGatsbyImageData } from "gatsby-plugin-image"
 import queryString, { ParsedQuery } from "query-string"
+import Template from "components/Common/Template"
 
 export interface PostProps {
   location: {
@@ -62,8 +63,7 @@ const IndexPage = ({
   )
 
   return (
-    <Container>
-      <GlobalStyle />
+    <Template>
       <Intro profileImage={file.childImageSharp.gatsbyImageData} />
       <CategoryList
         selectedCategory={selectedCategory}
@@ -73,8 +73,7 @@ const IndexPage = ({
         selectedCategory={selectedCategory}
         posts={allMarkdownRemark.edges}
       />
-      <Footer />
-    </Container>
+    </Template>
   )
 }
 
