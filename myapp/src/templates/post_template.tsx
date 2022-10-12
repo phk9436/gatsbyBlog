@@ -12,12 +12,16 @@ interface PostTemplateProps {
       edges: PostPageItemType[]
     }
   }
+  location: {
+    href: string
+  }
 }
 
 function postTemplate({
   data: {
     allMarkdownRemark: { edges },
   },
+  location: { href },
 }: PostTemplateProps) {
   const {
     node: {
@@ -29,12 +33,13 @@ function postTemplate({
         categories,
         thumbnail: {
           childImageSharp: { gatsbyImageData },
+          publicURL
         },
       },
     },
   } = edges[0]
   return (
-    <Template>
+    <Template title={title} description={summary} url={href} image={publicURL}>
       <PostHead
         title={title}
         date={date}
@@ -64,6 +69,7 @@ export const queryMarkdownDataBySlug = graphql`
               childImageSharp {
                 gatsbyImageData
               }
+              publicURL
             }
           }
         }
