@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Template from "components/Common/Template"
 import { PostPageItemType } from "types/PostItem.types"
 import PostHead from "components/Post/PostHead"
+import PostContent from "components/Post/PostContent"
 
 interface PostTemplateProps {
   data: {
@@ -12,8 +13,7 @@ interface PostTemplateProps {
   }
 }
 
-
-function post_template({
+function postTemplate({
   data: {
     allMarkdownRemark: { edges },
   },
@@ -40,11 +40,12 @@ function post_template({
         categories={categories}
         thumbnail={gatsbyImageData}
       />
+      <PostContent html={html} />
     </Template>
   )
 }
 
-export default post_template
+export default postTemplate
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
