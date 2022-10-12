@@ -16,12 +16,19 @@ function PostList({ selectedCategory, posts }: PostListProps) {
     selectedCategory,
     posts
   )
-  console.log(containerRef)
   return (
     <PostListWrapper ref={containerRef}>
-      {postList.map(({ node: { id, frontmatter } }: PostListItemType) => (
-        <PostItem {...frontmatter} link="https://www.naver.com" key={id} />
-      ))}
+      {postList.map(
+        ({
+          node: {
+            id,
+            fields: { slug },
+            frontmatter,
+          },
+        }: PostListItemType) => (
+          <PostItem {...frontmatter} link={slug} key={id} />
+        )
+      )}
     </PostListWrapper>
   )
 }
