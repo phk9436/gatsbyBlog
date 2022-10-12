@@ -2,6 +2,9 @@ import React, { useMemo } from "react"
 import styled from "@emotion/styled"
 import PostItem from "./PostItem"
 import { PostListItemType } from "types/PostItem.types"
+import useInfiniteScroll, {
+  useInfiniteScrollType,
+} from "hooks/useInfiniteScroll"
 
 interface PostListProps {
   selectedCategory: string
@@ -9,24 +12,14 @@ interface PostListProps {
 }
 
 function PostList({ selectedCategory, posts }: PostListProps) {
-  const postListData = useMemo(
-    () =>
-      posts.filter(
-        ({
-          node: {
-            frontmatter: { categories },
-          },
-        }: PostListItemType) =>
-          selectedCategory !== "All"
-            ? categories.includes(selectedCategory)
-            : true
-      ),
-    [selectedCategory]
+  const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
+    selectedCategory,
+    posts
   )
-
+  console.log(containerRef)
   return (
-    <PostListWrapper>
-      {postListData.map(({ node: { id, frontmatter } }: PostListItemType) => (
+    <PostListWrapper ref={containerRef}>
+      {postList.map(({ node: { id, frontmatter } }: PostListItemType) => (
         <PostItem {...frontmatter} link="https://www.naver.com" key={id} />
       ))}
     </PostListWrapper>
