@@ -12,16 +12,16 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-sitemap',
+    "gatsby-plugin-sitemap",
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          formats: ['auto', 'webp'],
+          formats: ["auto", "webp"],
           quality: 100,
-          placeholder: 'blurred',
-        }
-      }
+          placeholder: "blurred",
+        },
+      },
     },
     {
       resolve: "gatsby-plugin-typescript",
@@ -83,11 +83,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
   ],
 }
-
