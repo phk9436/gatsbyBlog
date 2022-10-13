@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://phk9436.github.io/sitemap/sitemap-index.xml
+Sitemap: https://phk9436.github.io/gatsbyBlog/sitemap/sitemap-index.xml
 Host: https://phk9436.github.io
