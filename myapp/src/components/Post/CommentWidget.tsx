@@ -3,7 +3,7 @@ import React, { createRef, useEffect } from "react"
 import styled from '@emotion/styled'
 
 const src = "https://utteranc.es/client.js"
-const repo = "phk9436/phk9436.github.io"
+const repo = "phk9436/gatsbyProject.github.io"
 
 interface UtteranceAttributesType {
   src: string
