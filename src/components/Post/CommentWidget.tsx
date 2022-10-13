@@ -3,7 +3,7 @@ import React, { createRef, useEffect } from "react"
 import styled from '@emotion/styled'
 
 const src = "https://utteranc.es/client.js"
-const repo = "phk9436/gatsbyProject.github.io"
+const repo = "phk9436/gatsbyBlog"
 
 interface UtteranceAttributesType {
   src: string
@@ -36,7 +36,9 @@ function CommentWidget() {
       utterances.setAttribute(key, value)
     })
     element.current.appendChild(utterances)
+    console.log(utterances)
   }, [])
+  
   return <UtterancesWrapper ref={element} />
 }
 
