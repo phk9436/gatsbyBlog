@@ -7,14 +7,11 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-sharp`,
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -32,17 +29,6 @@ module.exports = {
         allExtensions: true,
       },
     },
-    `gatsby-plugin-react-helmet`,
-
-    {
-      resolve: "gatsby-plugin-typescript",
-      options: {
-        isTSX: true,
-        allExtensions: true,
-      },
-    },
-    `gatsby-plugin-emotion`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,8 +43,6 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -97,7 +81,12 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
   ],
 }
 

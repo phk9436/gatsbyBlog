@@ -16,6 +16,8 @@ function Template({ title, description, url, image, children }: TemplateProps) {
   return (
     <Container>
       <Helmet>
+        <title>{title}</title>
+
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -26,6 +28,8 @@ function Template({ title, description, url, image, children }: TemplateProps) {
         <meta property="og:image" content={image} />
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content={title} />
+
+        <html lang="ko" />
       </Helmet>
       <GlobalStyle />
       {children}
@@ -36,7 +40,7 @@ function Template({ title, description, url, image, children }: TemplateProps) {
 
 export default Template
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   height: 100%;
