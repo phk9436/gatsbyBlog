@@ -26,7 +26,7 @@ function PostList({ selectedCategory, posts }: PostListProps) {
             frontmatter,
           },
         }: PostListItemType) => (
-          <PostItem {...frontmatter} link={slug} key={id} />
+          <PostItem {...frontmatter} link={`/gatsbyBlog${slug}`} key={id} />
         )
       )}
     </PostListWrapper>
