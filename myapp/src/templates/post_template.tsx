@@ -33,7 +33,7 @@ function postTemplate({
         categories,
         thumbnail: {
           childImageSharp: { gatsbyImageData },
-          publicURL
+          publicURL,
         },
       },
     },
