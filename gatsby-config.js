@@ -4,7 +4,7 @@ module.exports = {
     title: `주니어 개발자의 개발 블로그`,
     description: `주니어 개발자로서의 저를 표현한 블로그입니다.`,
     author: `phk9436`,
-    siteUrl: `https://phk9436.github.io/`,
+    siteUrl: `https://phk9436.github.io/gatsbyBlog`,
   },
   plugins: [
     `gatsby-plugin-image`,
